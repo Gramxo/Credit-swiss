@@ -65,10 +65,9 @@
                         </div>
                     </div>
                     
-                   <button type="submit" class="btn btn-primary btn-block" onclick="navigateWithTransition('login.html');">
+                   <button type="submit" class="btn btn-primary btn-block">
     Sign In
-</button>
-                    
+</button>    
                     <div class="form-footer">
                         <p>Don't have an account? <a href="register.html">Register here</a></p>
                     </div>
@@ -88,38 +87,38 @@
         </div>
     </footer>
 
-    <script>
-                        // Mobile Menu Toggle
+          <script>
+// Mobile Menu Toggle
 document.querySelector('.hamburger-menu').addEventListener('click', function() {
     document.querySelector('.main-nav ul').classList.toggle('show');
 });
 
 // Login Form with 5-second Transition
 document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    e.preventDefault();  // stop form reload no matter what
     
-    const username = document.getElementById('username').value;
-
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
     
-    // Fixed credentials (for demo only)
-
-    const validUsername = 'Robert196';
-    const validPassword = 'Adrian1196$';
-    
-    if (username === validUsername && password === validPassword) {
-        // Show loading/transition overlay
-        const transitionOverlay = document.getElementById('pageTransition');
-        transitionOverlay.classList.add('active');
-        
-        // Wait 5 seconds before redirecting
+    // First credentials
+    if (username === 'Robert196' && password === 'Adrian1196$') {
+        document.getElementById('pageTransition').classList.add('active');
         setTimeout(() => {
             window.location.href = 'dashboard.html';
-        }, 5000); // 5000ms = 5 seconds
+        }, 5000);
+    
+    // Second credentials
+    } else if (username === 'Brantleygil1' && password === 'Gilbert1190$') {
+        document.getElementById('pageTransition').classList.add('active');
+        setTimeout(() => {
+            window.location.href = 'dashboard2.html';
+        }, 5000);
+    
+    // Anything else
     } else {
         alert('Invalid username or password! Please try again.');
     }
 });
-    </script>
+</script>
 </body>
 </html>
